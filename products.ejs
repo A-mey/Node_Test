@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <td>Id</td>
+                <td>Product</td>
+            </thead>
+            <tbody>
+                <% 
+                if(data.length){
+                    for(var i=0; i<data.length; i++) {
+                %>
+                    <tr>
+                        <form method="GET" action="/deleteProduct/<%= data[i].ProductId %>">
+                            <td><%= data[i].ProductId %></td>
+                            <td><%= data[i].ProductName %></td>
+                            <td>
+                                <button type="submit">Delete</button>
+                            </td>
+                        </form>
+                        <td><a href="editProduct/<%= data[i].ProductId %>">Edit</a></td>
+                    </tr>
+                <%    
+                    }
+                }
+                %>
+            </tbody>
+        </table>
+        <form method="POST" action="/addProduct">
+            <input type="text" name="ProductName" required/><br>
+            <button type="submit">Add</button>
+        </form>
+    </body>
+</html>
